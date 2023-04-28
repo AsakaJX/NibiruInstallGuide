@@ -1,1 +1,51 @@
-# Nibiru Install Guide
+# Nibiru. Гайд по установке и синхронизации.
+## Установка Nibiru:
+
+### 1. Быстрая установка используя скрипт от Nodes.Guru
+```shell
+wget -q -O nibiru.sh https://api.nodes.guru/nibiru.sh && chmod +x nibiru.sh && sudo /bin/bash nibiru.sh
+```
+### 2. После завершения работы скрипта, выполните эту команду:
+```shell
+source $HOME/.bash_profile
+```
+### 3. Теперь создайте кошелек. (Не забудьте сохранить адресс кошелька)
+```shell
+nibid keys add wallet
+```
+### 4. Далее вам нужно запросить токены для зачисления на созданный кошелек. Это можно сдлеать либо через дискорд [Nibiru](https://discord.gg/nibirufi) в чате [#faucet](https://discord.com/channels/947911971515293759/984840062871175219), либо выполнив эти команды:
+```shell
+FAUCET_URL="https://faucet.itn-1.nibiru.fi/"
+ADDR="ЗДЕСЬ ВСТАВЬТЕ РАНЕЕ СОХРАННЕНЫЙ АДРЕСС КОШЕЛЬКА"
+curl -X POST -d '{"address": "'"$ADDR"'", "coins": ["11000000unibi","100000000unusd","100000000uusdt"]}' $FAUCET_URL
+```
+- [x] **Установка ноды завершена, теперь переходим к этапу синхронизации.**
+## Синхронизация ноды.
+
+### Подготовка к синхронизации.
+```shell
+systemctl enable nibid
+```
+
+### 1. Проверяем запущены ли процессы Nibiru.
+```shell
+sudo lsof -i -P -n | grep LISTEN | grep nibid
+```
+### 2. Если запущены, то выполняем эту команду. Если нет, то пропускаем этот шаг.
+```shell
+killall nibid
+```
+### 3. Запускаем синхронизацию ноды используя снапшот.
+```shell
+nibirud start --state-sync.snapshot-interval 100 --state-sync.snapshot-keep-recent 2
+```
+### 3.1. Запускаем синхронизацию ноды используя снапшот в фоне. (Если нет возможности держать терминал открытым длительное время, но в этом случае вы не будете видеть логов.)
+```shell
+nibirud start --state-sync.snapshot-interval 100 --state-sync.snapshot-keep-recent 2 &
+```
+
+### 4. Проверяем синхронизированна ли нода. (Этап синхронизации ноды занимает длительное время (до нескольких дней))
+```shell
+curl -s localhost:26657/status | jq .result.sync_info.catching_up
+```
+- [x] Если команда возвратила значение ``false``, значит нода синхронизированна.
