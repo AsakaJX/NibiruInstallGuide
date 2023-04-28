@@ -43,6 +43,11 @@ nibid start --state-sync.snapshot-interval 100 --state-sync.snapshot-keep-recent
 ```shell
 nibid start --state-sync.snapshot-interval 100 --state-sync.snapshot-keep-recent 2 &
 ```
+### После запуска команды можете спокойно закрывать терминал. Команда теперь будет выполняться в фоне на сервере.
+### 3.2 Если нужно остановить синхронизацию введите следующую команду.
+```shell
+killall nibid
+```
 
 ### 4. Проверяем синхронизированна ли нода. (Этап синхронизации ноды занимает длительное время (до нескольких дней))
 ```shell
