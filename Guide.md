@@ -13,7 +13,7 @@ source $HOME/.bash_profile
 ```shell
 nibid keys add wallet
 ```
-### 4. Далее вам нужно запросить токены для зачисления на созданный кошелек. Это можно сдлеать либо через дискорд [Nibiru](https://discord.gg/nibirufi) в чате [#faucet](https://discord.com/channels/947911971515293759/984840062871175219), либо выполнив эти команды:
+### 4. Далее вам нужно запросить токены для зачисления на созданный кошелек. Это можно сделать либо через дискорд [Nibiru](https://discord.gg/nibirufi) в чате [#faucet](https://discord.com/channels/947911971515293759/984840062871175219), либо выполнив эти команды:
 ```shell
 FAUCET_URL="https://faucet.itn-1.nibiru.fi/"
 ADDR="ЗДЕСЬ ВСТАВЬТЕ РАНЕЕ СОХРАННЕНЫЙ АДРЕСС КОШЕЛЬКА"
