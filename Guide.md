@@ -25,6 +25,7 @@ curl -X POST -d '{"address": "'"$ADDR"'", "coins": ["11000000unibi","100000000un
 ### Подготовка к синхронизации.
 ```shell
 systemctl enable nibid
+sysmtectl start nibid
 ```
 
 ### 1. Проверяем запущены ли процессы Nibiru.
@@ -44,13 +45,21 @@ nibid start --state-sync.snapshot-interval 100 --state-sync.snapshot-keep-recent
 nibid start --state-sync.snapshot-interval 100 --state-sync.snapshot-keep-recent 2 &
 ```
 ### После запуска команды можете спокойно закрывать терминал. Команда теперь будет выполняться в фоне на сервере.
-### 3.2 Если нужно остановить синхронизацию введите следующую команду.
-```shell
-killall nibid
-```
 
 ### 4. Проверяем синхронизированна ли нода. (Этап синхронизации ноды занимает длительное время (до нескольких дней))
 ```shell
 curl -s localhost:26657/status | jq .result.sync_info.catching_up
 ```
 - [x] Если команда возвратила значение ``false``, значит нода синхронизированна.
+
+## Дополнительные команды.
+### Если нужно остановить синхронизацию введите следующую команду.
+```shell
+killall nibid
+```
+### Если нужно выключить ноду, введите следующие команды:
+```shell
+systemctl disable nibid
+systemctl stop nibid
+killall nibid
+```
