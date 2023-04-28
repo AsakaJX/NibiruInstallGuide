@@ -37,11 +37,11 @@ killall nibid
 ```
 ### 3. Запускаем синхронизацию ноды используя снапшот.
 ```shell
-nibirud start --state-sync.snapshot-interval 100 --state-sync.snapshot-keep-recent 2
+nibid start --state-sync.snapshot-interval 100 --state-sync.snapshot-keep-recent 2
 ```
 ### 3.1. Запускаем синхронизацию ноды используя снапшот в фоне. (Если нет возможности держать терминал открытым длительное время, но в этом случае вы не будете видеть логов.)
 ```shell
-nibirud start --state-sync.snapshot-interval 100 --state-sync.snapshot-keep-recent 2 &
+nibid start --state-sync.snapshot-interval 100 --state-sync.snapshot-keep-recent 2 &
 ```
 
 ### 4. Проверяем синхронизированна ли нода. (Этап синхронизации ноды занимает длительное время (до нескольких дней))
