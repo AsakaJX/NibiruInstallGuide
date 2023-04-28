@@ -60,7 +60,7 @@ curl -s localhost:26657/status | jq .result.sync_info.catching_up
 ## Дополнительные команды.
 ### Просмотр логов ноды.
 ```shell
-journalctl -u nibid -f -o
+journalctl -u nibid -f
 ```
 ### Если нужно остановить синхронизацию введите следующую команду.
 ```shell
