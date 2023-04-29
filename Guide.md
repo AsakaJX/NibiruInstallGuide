@@ -62,13 +62,13 @@ curl -s localhost:26657/status | jq .result.sync_info.catching_up
 ```shell
 journalctl -u nibid -f
 ```
-### Если нужно остановить синхронизацию введите следующую команду.
-```shell
-killall nibid
-```
-### Если нужно выключить ноду, введите следующие команды:
+### Выключение ноды
 ```shell
 systemctl disable nibid
 systemctl stop nibid
 killall nibid
+```
+### Перезапуск ноды
+```shell
+systemctl restart nibid
 ```
